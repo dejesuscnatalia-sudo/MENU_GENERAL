@@ -69,7 +69,7 @@ namespace MENU_GENERAL.CLASES
                 cmd.Parameters.AddWithValue("@ruta", ruta);
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
-                    return rd.Read() && rd.GetInt32(0) == 1;
+                    return rd.Read() && Convert.ToInt32(rd.GetValue(0)) == 1;
                 }
             }
         }

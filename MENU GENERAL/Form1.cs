@@ -84,5 +84,11 @@ namespace MENU_GENERAL
             FRM_CARRERA oCarrera= new FRM_CARRERA();
             oCarrera.Show();
         }
+
+        private void rESPALDOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMRespaldo oRespaldo = new FRMRespaldo();
+            oRespaldo.Show();
+        }
     }
 }

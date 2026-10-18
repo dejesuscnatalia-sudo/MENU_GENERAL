@@ -14,14 +14,14 @@ namespace MENU_GENERAL.CLASES
         private string correo;
         private int carreras;
 
-        public clMaestro(int numEmp, string _nombre, string telefono, string correo, int carreras)
+        public clMaestro(int numEmp, string _nombre, string telefono, string correo)//, int carreras)
         {
             //Para grabar y modificar
             this.num_Empleado = numEmp;
             this.nombre = _nombre;
             this.telefono = telefono;
             this.correo = correo;
-            this.carreras = carreras;
+           // this.carreras = carreras;
         }
         public clMaestro(int numEmp)
         {

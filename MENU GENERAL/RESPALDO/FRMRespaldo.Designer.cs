@@ -34,7 +34,7 @@ namespace MENU_GENERAL.ESCOLAR
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(30, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 16);
+            this.label1.Size = new System.Drawing.Size(95, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Base de datos";
             // 
@@ -43,7 +43,7 @@ namespace MENU_GENERAL.ESCOLAR
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(30, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(200, 16);
+            this.label2.Size = new System.Drawing.Size(198, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Carpeta de respaldos (servidor)";
             // 
@@ -54,6 +54,7 @@ namespace MENU_GENERAL.ESCOLAR
             this.txtBD.ReadOnly = true;
             this.txtBD.Size = new System.Drawing.Size(200, 22);
             this.txtBD.TabIndex = 2;
+            this.txtBD.TextChanged += new System.EventHandler(this.txtBD_TextChanged);
             // 
             // txtCarpeta
             // 
@@ -87,7 +88,7 @@ namespace MENU_GENERAL.ESCOLAR
             this.lblUltimo.AutoSize = true;
             this.lblUltimo.Location = new System.Drawing.Point(30, 165);
             this.lblUltimo.Name = "lblUltimo";
-            this.lblUltimo.Size = new System.Drawing.Size(130, 16);
+            this.lblUltimo.Size = new System.Drawing.Size(117, 16);
             this.lblUltimo.TabIndex = 6;
             this.lblUltimo.Text = "Último respaldo: ...";
             // 
@@ -116,7 +117,7 @@ namespace MENU_GENERAL.ESCOLAR
             this.lblEstado.AutoSize = true;
             this.lblEstado.Location = new System.Drawing.Point(30, 390);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(40, 16);
+            this.lblEstado.Size = new System.Drawing.Size(35, 16);
             this.lblEstado.TabIndex = 9;
             this.lblEstado.Text = "Listo";
             // 

@@ -118,5 +118,10 @@ namespace MENU_GENERAL.ESCOLAR
             barra.Visible = ocupado;
             lblEstado.Text = estado;
         }
+
+        private void txtBD_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

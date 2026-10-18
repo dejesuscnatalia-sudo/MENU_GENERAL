@@ -49,8 +49,10 @@
     <Compile Include="CLASES\Alumno.cs" />
     <Compile Include="CLASES\clAreaC.cs" />
     <Compile Include="CLASES\clCarreras.cs" />
+    <Compile Include="CLASES\clInfoRespaldo.cs" />
     <Compile Include="CLASES\clMaestro.cs" />
     <Compile Include="CLASES\clMaterias.cs" />
+    <Compile Include="CLASES\clRespaldo.cs" />
     <Compile Include="CLASES\clSUMAR.cs" />
     <Compile Include="CLASES\clTrapecio.cs" />
     <Compile Include="CLASES\Conexion.cs" />
@@ -145,6 +147,12 @@
     <Compile Include="ESCOLAR\FRMCapturaAlumno.Designer.cs">
       <DependentUpon>FRMCapturaAlumno.cs</DependentUpon>
     </Compile>
+    <Compile Include="RESPALDO\FRMRespaldo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RESPALDO\FRMRespaldo.Designer.cs">
+      <DependentUpon>FRMRespaldo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ESCOLAR\FRMMaterias.resx">
       <DependentUpon>FRMMaterias.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +194,9 @@
     </Compile>
     <EmbeddedResource Include="ESCOLAR\FRMCapturaAlumno.resx">
       <DependentUpon>FRMCapturaAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RESPALDO\FRMRespaldo.resx">
+      <DependentUpon>FRMRespaldo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

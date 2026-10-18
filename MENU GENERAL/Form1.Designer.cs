@@ -47,6 +47,8 @@
             this.dEPARTAMENTOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mATERIASToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sALIRToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.rESPALDOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rESPALDARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +59,7 @@
             this.oPERACIONESToolStripMenuItem,
             this.fIGURASToolStripMenuItem,
             this.eSCOLARToolStripMenuItem,
+            this.rESPALDOToolStripMenuItem,
             this.sALIRToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -199,6 +202,21 @@
             this.sALIRToolStripMenuItem1.Text = "SALIR";
             this.sALIRToolStripMenuItem1.Click += new System.EventHandler(this.sALIRToolStripMenuItem1_Click);
             // 
+            // rESPALDOToolStripMenuItem
+            // 
+            this.rESPALDOToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rESPALDARToolStripMenuItem});
+            this.rESPALDOToolStripMenuItem.Name = "rESPALDOToolStripMenuItem";
+            this.rESPALDOToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.rESPALDOToolStripMenuItem.Text = "RESPALDO";
+            this.rESPALDOToolStripMenuItem.Click += new System.EventHandler(this.rESPALDOToolStripMenuItem_Click);
+            // 
+            // rESPALDARToolStripMenuItem
+            // 
+            this.rESPALDARToolStripMenuItem.Name = "rESPALDARToolStripMenuItem";
+            this.rESPALDARToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rESPALDARToolStripMenuItem.Text = "RESPALDAR";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -237,6 +255,8 @@
         private System.Windows.Forms.ToolStripMenuItem _carreraSToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem dEPARTAMENTOSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mATERIASToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rESPALDOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rESPALDARToolStripMenuItem;
     }
 }
 

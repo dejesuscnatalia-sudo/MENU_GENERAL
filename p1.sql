@@ -1,0 +1,1 @@
+﻿Select * from tbl_Registro_Maestros where num_Empleado = 1

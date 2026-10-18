@@ -15,7 +15,7 @@ namespace MENU_GENERAL.ESCOLAR
         private async void FRMRespaldo_Load(object sender, EventArgs e)
         {
             txtBD.Text = Global.bd;
-            txtCarpeta.Text = @"C:\Respaldos_BD";
+            txtCarpeta.Text = @"C:\RESPALDOS";
             await MostrarUltimoRespaldoAsync();
         }
 

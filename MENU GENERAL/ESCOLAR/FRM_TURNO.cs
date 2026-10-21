@@ -16,5 +16,10 @@ namespace MENU_GENERAL.ESCOLAR
         {
             InitializeComponent();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

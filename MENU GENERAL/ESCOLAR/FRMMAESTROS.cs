@@ -92,6 +92,7 @@ namespace MENU_GENERAL.ESCOLAR
                 textBox_nombre.Text = ds.Tables["Tabla"].Rows[0]["nombre"].ToString();
                 textBoxCorreo.Text = ds.Tables["Tabla"].Rows[0]["correo"].ToString();
                 textBoxTelef.Text = ds.Tables["Tabla"].Rows[0]["telefono"].ToString();
+                cmbcarreras.SelectedValue = ds.Tables["Tabla"].Rows[0]["idCarrera"].ToString();
 
             }
             else

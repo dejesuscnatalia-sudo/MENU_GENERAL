@@ -162,6 +162,12 @@
     <EmbeddedResource Include="ESCOLAR\FRM_CARRERA.resx">
       <DependentUpon>FRM_CARRERA.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ESCOLAR\FRM_SEMESTRES.resx">
+      <DependentUpon>FRM_SEMESTRES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ESCOLAR\FRM_TURNO.resx">
+      <DependentUpon>FRM_TURNO.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ESCOLAR\FRM_UNIDADES_ACADEMICAS.resx">
       <DependentUpon>FRM_UNIDADES_ACADEMICAS.cs</DependentUpon>
     </EmbeddedResource>

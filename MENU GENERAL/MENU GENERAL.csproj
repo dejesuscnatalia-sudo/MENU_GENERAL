@@ -84,6 +84,12 @@
     <Compile Include="ESCOLAR\FRM_CARRERA.Designer.cs">
       <DependentUpon>FRM_CARRERA.cs</DependentUpon>
     </Compile>
+    <Compile Include="ESCOLAR\FRM_Departamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ESCOLAR\FRM_Departamentos.Designer.cs">
+      <DependentUpon>FRM_Departamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="ESCOLAR\FRM_SEMESTRES.cs">
       <SubType>Form</SubType>
     </Compile>

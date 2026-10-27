@@ -53,8 +53,11 @@
     <Compile Include="CLASES\clMaestro.cs" />
     <Compile Include="CLASES\clMaterias.cs" />
     <Compile Include="CLASES\clRespaldo.cs" />
+    <Compile Include="CLASES\clSemestres.cs" />
     <Compile Include="CLASES\clSUMAR.cs" />
     <Compile Include="CLASES\clTrapecio.cs" />
+    <Compile Include="CLASES\clTurnocs.cs" />
+    <Compile Include="CLASES\clUnidAcad.cs" />
     <Compile Include="CLASES\Conexion.cs" />
     <Compile Include="CLASES\Global.cs" />
     <Compile Include="ESCOLAR\FRMMaterias.cs">

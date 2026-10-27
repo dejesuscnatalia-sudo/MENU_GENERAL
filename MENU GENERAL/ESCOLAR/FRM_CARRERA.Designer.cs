@@ -45,6 +45,8 @@
             this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cbxDepas = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -68,7 +70,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(147, 124);
+            this.label1.Location = new System.Drawing.Point(164, 124);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 16);
             this.label1.TabIndex = 2;
@@ -102,7 +104,7 @@
             this.buscarToolStripMenuItem,
             this.eliminarToolStripMenuItem});
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(85, 26);
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
             // guardarToolStripMenuItem
@@ -126,7 +128,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(52, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(52, 24);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
             // toolStrip1
@@ -139,7 +141,7 @@
             this.btnEliminar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 28);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 47);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 42);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -149,7 +151,7 @@
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(39, 44);
+            this.btnGuardar.Size = new System.Drawing.Size(39, 39);
             this.btnGuardar.Text = "toolStripButton1";
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -159,7 +161,7 @@
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
             this.btnBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(39, 44);
+            this.btnBuscar.Size = new System.Drawing.Size(39, 39);
             this.btnBuscar.Text = "toolStripButton2";
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -169,7 +171,7 @@
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(39, 44);
+            this.btnEliminar.Size = new System.Drawing.Size(39, 39);
             this.btnEliminar.Text = "toolStripButton3";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -190,11 +192,30 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(59, 20);
             this.toolStripStatusLabel1.Text = "Usuario";
             // 
+            // cbxDepas
+            // 
+            this.cbxDepas.FormattingEnabled = true;
+            this.cbxDepas.Location = new System.Drawing.Point(283, 251);
+            this.cbxDepas.Name = "cbxDepas";
+            this.cbxDepas.Size = new System.Drawing.Size(211, 24);
+            this.cbxDepas.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(178, 259);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 16);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Departamento";
+            // 
             // FRM_CARRERA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cbxDepas);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label2);
@@ -234,5 +255,7 @@
         private System.Windows.Forms.ToolStripButton btnEliminar;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ComboBox cbxDepas;
+        private System.Windows.Forms.Label label3;
     }
 }

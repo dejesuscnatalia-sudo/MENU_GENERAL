@@ -14,7 +14,8 @@ namespace MENU_GENERAL.ESCOLAR
         {
             InitializeComponent();
             CargarCarreras();
-
+        }
+/*
             // Conexiones que no estaban en el diseñador
             registrarbtn.Click += (s, e) => buscar(true);
             registrarToolStripMenuItem.Click += (s, e) => metregistrar();
@@ -22,12 +23,13 @@ namespace MENU_GENERAL.ESCOLAR
             eliminarToolStripMenuItem.Click += (s, e) => eliminar();
             salirToolStripMenuItem.Click += (s, e) => Close();
         }
-
+*/
         private void CargarCarreras()
         {
             new Conexion("Select idCarrera, carrera from tbl_Carreras order by carrera")
-                .LlenarCombo(comboBox1, "idCarrera", "carrera");
+                .LlenarCombo(cmbcarreras, "idCarrera", "carrera");
         }
+        
 
         private void textBoxNumero_Leave(object sender, EventArgs e)
         {
@@ -52,7 +54,7 @@ namespace MENU_GENERAL.ESCOLAR
                 MessageBox.Show("Captura un número de empleado válido.");
                 return;
             }
-            if (textBox_nombre.Text.Trim() == "" || comboBox1.SelectedValue == null)
+            if (textBox_nombre.Text.Trim() == "" || cmbcarreras.SelectedValue == null)
             {
                 MessageBox.Show("Captura el nombre y selecciona una carrera.");
                 return;
@@ -62,7 +64,7 @@ namespace MENU_GENERAL.ESCOLAR
             DataSet ds = new Conexion(oMaestro.Buscar()).CONSULTAR();
 
             oMaestro = new clMaestro(num, textBox_nombre.Text.Trim(), textBoxTelef.Text.Trim(),
-                                     textBoxCorreo.Text.Trim(), Convert.ToInt32(comboBox1.SelectedValue));
+                                     textBoxCorreo.Text.Trim(), Convert.ToInt32(cmbcarreras.SelectedValue));
 
             if (ds.Tables["Tabla"].Rows.Count > 0)
             {
@@ -98,9 +100,9 @@ namespace MENU_GENERAL.ESCOLAR
                 textBoxTelef.Text = t.Rows[0]["telefono"].ToString();
 
                 if (t.Rows[0]["idCarrera"] != DBNull.Value)
-                    comboBox1.SelectedValue = Convert.ToInt32(t.Rows[0]["idCarrera"]);
+                    cmbcarreras.SelectedValue = Convert.ToInt32(t.Rows[0]["idCarrera"]);
                 else
-                    comboBox1.SelectedIndex = -1;
+                    cmbcarreras.SelectedIndex = -1;
             }
             else if (avisar)
             {
@@ -130,7 +132,7 @@ namespace MENU_GENERAL.ESCOLAR
                     MessageBox.Show("El registro se borró correctamente");
                     textBoxNumero.Clear(); textBox_nombre.Clear();
                     textBoxCorreo.Clear(); textBoxTelef.Clear();
-                    comboBox1.SelectedIndex = -1;
+                    cmbcarreras.SelectedIndex = -1;
                 }
             }
             else

@@ -49,6 +49,9 @@
     <Compile Include="CLASES\Alumno.cs" />
     <Compile Include="CLASES\clAreaC.cs" />
     <Compile Include="CLASES\clCarreras.cs" />
+    <Compile Include="CLASES\clCatalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CLASES\clInfoRespaldo.cs" />
     <Compile Include="CLASES\clMaestro.cs" />
     <Compile Include="CLASES\clMaterias.cs" />
@@ -60,12 +63,6 @@
     <Compile Include="CLASES\clUnidAcad.cs" />
     <Compile Include="CLASES\Conexion.cs" />
     <Compile Include="CLASES\Global.cs" />
-    <Compile Include="ESCOLAR\FRMCatalogo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ESCOLAR\FRMCatalogo.Designer.cs">
-      <DependentUpon>FRMCatalogo.cs</DependentUpon>
-    </Compile>
     <Compile Include="ESCOLAR\FRMMaterias.cs">
       <SubType>Form</SubType>
     </Compile>

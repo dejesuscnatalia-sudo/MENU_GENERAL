@@ -1,5 +1,5 @@
 ﻿using MENU_GENERAL.CLASES;
-using MENU_GENERAL.ESCOLAR.MENU_GENERAL.CLASES;
+using MENU_GENERAL.ESCOLAR;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

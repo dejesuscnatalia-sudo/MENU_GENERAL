@@ -205,7 +205,7 @@
             this.registrarbtn.Name = "registrarbtn";
             this.registrarbtn.Size = new System.Drawing.Size(39, 39);
             this.registrarbtn.Text = "toolStripButton2";
-            this.registrarbtn.Click += new System.EventHandler(this.registrarbtn_Click);
+//            this.registrarbtn.Click += new System.EventHandler(this.registrarbtn_Click);
             // 
             // borrarbtn
             // 
@@ -241,7 +241,7 @@
             this.cmbcarreras.Name = "cmbcarreras";
             this.cmbcarreras.Size = new System.Drawing.Size(328, 24);
             this.cmbcarreras.TabIndex = 15;
-            this.cmbcarreras.SelectedIndexChanged += new System.EventHandler(this.cmbcarreras_SelectedIndexChanged);
+//            this.cmbcarreras.SelectedIndexChanged += new System.EventHandler(this.cmbcarreras_SelectedIndexChanged);
             // 
             // label5
             // 

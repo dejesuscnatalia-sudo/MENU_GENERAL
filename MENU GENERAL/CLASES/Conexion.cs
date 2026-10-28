@@ -71,6 +71,5 @@ namespace MENU_GENERAL.CLASES
             cmb.DropDownStyle = ComboBoxStyle.DropDownList;
             cmb.SelectedIndex = -1;
         }
-```
     }
 }

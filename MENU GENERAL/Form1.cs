@@ -56,12 +56,7 @@ namespace MENU_GENERAL
             oCalc.Show();
         }
 
-        private void sALIRToolStripMenuItem1_Click(object sender, EventArgs e)
-        {   
-            FRMCapturaAlumno oRegistro = new FRMCapturaAlumno();
-            oRegistro.Show();
-        }
-
+       
         private void _carreraSToolStripMenuItem_Click(object sender, EventArgs e)
         {
 

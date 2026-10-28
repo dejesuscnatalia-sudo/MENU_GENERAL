@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MENU_GENERAL.ESCOLAR.MENU_GENERAL.CLASES;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,41 +7,31 @@ using System.Threading.Tasks;
 
 namespace MENU_GENERAL.CLASES
 {
-    internal class clTurno
+    internal class clTurno : ICatalogo
     {
-        private int num_turno;
-        private string Nombre_turno;
+        private int idTurno;
+        private string turno;
 
-        public clTurno() { } //meterle constructores en blanco
-        public clTurno(int num_turno)
+        public clTurno(int idTurno, string turno)
         {
-            this.num_turno = num_turno;
-        }
-        public clTurno(int num_turno, string Nombre_turno)
-        {
-            this.num_turno = num_turno;
-            this.Nombre_turno = Nombre_turno;
+            this.idTurno = idTurno;
+            this.turno = turno;
         }
         public string Guardar()
         {
-            return "Insert into Tbl_Turno Values (" + num_turno + ", '" + Nombre_turno + "')";
+            return "Insert into tbl_Turnos (idTurno, turno) Values (" + idTurno + ", '" + Conexion.Esc(turno) + "')";
         }
         public string Modificar()
         {
-            return $"Update Tbl_Turno set Nombre_turno='{Nombre_turno}' where Id_Turno={num_turno}";
+            return "Update tbl_Turnos set turno='" + Conexion.Esc(turno) + "' where idTurno=" + idTurno;
         }
         public string Buscar()
         {
-            return "Select * from Tbl_Turno where Id_Turno= " + num_turno;
+            return "Select * from tbl_Turnos where idTurno = " + idTurno;
         }
         public string Eliminar()
         {
-            return $"Update Tbl_Turno set Estado=0 where Id_Turno={num_turno}";
-        }
-
-        public string consultageneral()//esto en poco datos. De cientos de miles, abrir búsqueda en una ventana
-        {
-            return "select * from Tbl_Turno";
+            return "delete from tbl_Turnos where idTurno = " + idTurno;
         }
     }
 }

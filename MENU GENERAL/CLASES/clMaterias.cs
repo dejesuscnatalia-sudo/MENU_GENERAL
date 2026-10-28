@@ -36,7 +36,7 @@ namespace MENU_GENERAL.CLASES
 
         public string Modificar()
         {
-            return $"Update tbl_Materias set carrera='{id_materia}' where idCarrera={Nombre}";
+            return "Update tbl_Materias set nombre='" + Conexion.Esc(Nombre) + "' where id_Materia=" + id_materia;
         }
         public string Buscar()
         {

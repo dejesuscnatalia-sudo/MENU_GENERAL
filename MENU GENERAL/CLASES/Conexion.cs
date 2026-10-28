@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Data.SqlClient;
-using System.Data;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MENU_GENERAL.CLASES
 {
@@ -52,5 +53,24 @@ namespace MENU_GENERAL.CLASES
             conn.Close();
             return datos;
         }
+
+        public static string Esc(string s)
+        {
+            return (s ?? "").Replace("'", "''");
+        }
+
+        // Usa la sentencia del constructor: la 1ª columna es el valor, la 2ª el texto
+        public void LlenarCombo(ComboBox cmb, string valor, string texto)
+        {
+            DataSet ds = CONSULTAR();
+            cmb.DataSource = null;
+            cmb.Items.Clear();
+            cmb.DisplayMember = texto;
+            cmb.ValueMember = valor;
+            cmb.DataSource = ds.Tables["Tabla"];
+            cmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmb.SelectedIndex = -1;
+        }
+```
     }
 }

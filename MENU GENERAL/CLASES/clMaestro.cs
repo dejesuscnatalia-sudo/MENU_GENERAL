@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MENU_GENERAL.CLASES
 {
@@ -14,14 +10,13 @@ namespace MENU_GENERAL.CLASES
         private string correo;
         private int carreras;
 
-        public clMaestro(int numEmp, string _nombre, string telefono, string correo, int carreras)
+        public clMaestro(int numEmp, string nombre, string telefono, string correo, int carreras)
         {
-            //Para grabar y modificar
             this.num_Empleado = numEmp;
-            this.nombre = _nombre;
+            this.nombre = nombre;
             this.telefono = telefono;
             this.correo = correo;
-           this.carreras = carreras;
+            this.carreras = carreras;
         }
         public clMaestro(int numEmp)
         {
@@ -30,14 +25,15 @@ namespace MENU_GENERAL.CLASES
 
         public string Guardar()
         {
-            return "Insert into tbl_Registro_Maestros Values ("+num_Empleado+", '"+nombre+"', '"+correo+"', '"+telefono+"', '"+carreras+")";
-            
+            return "Insert into tbl_Registro_Maestros (num_Empleado, nombre, correo, telefono, idCarrera) Values ("
+                + num_Empleado + ", '" + Conexion.Esc(nombre) + "', '" + Conexion.Esc(correo) + "', '"
+                + Conexion.Esc(telefono) + "', " + carreras + ")";
         }
-
         public string Modificar()
         {
-            return $"Update tbl_Registro_Maestros set nombre={nombre}, correo={correo}, telefono={telefono}, idCarrera={carreras} where num_Empleado={num_Empleado}";
-
+            return "Update tbl_Registro_Maestros set nombre='" + Conexion.Esc(nombre) + "', correo='" + Conexion.Esc(correo)
+                + "', telefono='" + Conexion.Esc(telefono) + "', idCarrera=" + carreras
+                + " where num_Empleado=" + num_Empleado;
         }
         public string Buscar()
         {
@@ -45,11 +41,7 @@ namespace MENU_GENERAL.CLASES
         }
         public string Eliminar()
         {
-            return $"delete from tbl_Registro_Maestros where num_Empleado = {num_Empleado}";
-        }
-        public void Limpiar()
-        {
-            
+            return "delete from tbl_Registro_Maestros where num_Empleado = " + num_Empleado;
         }
     }
 }

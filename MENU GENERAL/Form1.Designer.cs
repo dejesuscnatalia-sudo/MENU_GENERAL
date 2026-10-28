@@ -188,6 +188,7 @@
             this.dEPARTAMENTOSToolStripMenuItem.Name = "dEPARTAMENTOSToolStripMenuItem";
             this.dEPARTAMENTOSToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
             this.dEPARTAMENTOSToolStripMenuItem.Text = "DEPARTAMENTOS";
+            this.dEPARTAMENTOSToolStripMenuItem.Click += new System.EventHandler(this.dEPARTAMENTOSToolStripMenuItem_Click);
             // 
             // mATERIASToolStripMenuItem
             // 

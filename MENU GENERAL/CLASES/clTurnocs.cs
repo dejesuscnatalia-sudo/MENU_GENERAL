@@ -1,37 +1,50 @@
-﻿using MENU_GENERAL.ESCOLAR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MENU_GENERAL.CLASES
 {
-    internal class clTurno : ICatalogo
+    // Turno 1 ---- N Alumnos   (baja lógica con Estado)
+    internal class clTurno
     {
-        private int idTurno;
-        private string turno;
+        private int num_turno;
+        private string Nombre_turno;
 
-        public clTurno(int idTurno, string turno)
+        public clTurno() { }
+        public clTurno(int num_turno)
         {
-            this.idTurno = idTurno;
-            this.turno = turno;
+            this.num_turno = num_turno;
+        }
+        public clTurno(int num_turno, string Nombre_turno)
+        {
+            this.num_turno = num_turno;
+            this.Nombre_turno = Nombre_turno;
         }
         public string Guardar()
         {
-            return "Insert into tbl_Turnos (idTurno, turno) Values (" + idTurno + ", '" + Conexion.Esc(turno) + "')";
+            return "Insert into Tbl_Turno (Id_Turno, Nombre_turno, Estado) Values (" + num_turno +
+                   ", '" + Global.Esc(Nombre_turno) + "', 1)";
         }
+        // Al modificar también reactiva el turno si estaba dado de baja
         public string Modificar()
         {
-            return "Update tbl_Turnos set turno='" + Conexion.Esc(turno) + "' where idTurno=" + idTurno;
+            return "Update Tbl_Turno set Nombre_turno='" + Global.Esc(Nombre_turno) + "', Estado=1 where Id_Turno=" + num_turno;
         }
+        // Existe (aunque esté dado de baja): se usa para decidir entre INSERT y UPDATE
+        public string Existe()
+        {
+            return "Select Id_Turno from Tbl_Turno where Id_Turno=" + num_turno;
+        }
+        // Buscar: solo turnos activos
         public string Buscar()
         {
-            return "Select * from tbl_Turnos where idTurno = " + idTurno;
+            return "Select * from Tbl_Turno where Id_Turno=" + num_turno + " and Estado=1";
         }
         public string Eliminar()
         {
-            return "delete from tbl_Turnos where idTurno = " + idTurno;
+            return "Update Tbl_Turno set Estado=0 where Id_Turno=" + num_turno;
+        }
+        public string consultageneral()
+        {
+            return "select * from Tbl_Turno where Estado=1 order by Nombre_turno";
         }
     }
 }

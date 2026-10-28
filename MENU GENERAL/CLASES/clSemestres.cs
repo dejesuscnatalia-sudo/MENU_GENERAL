@@ -1,37 +1,44 @@
-﻿using MENU_GENERAL.ESCOLAR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MENU_GENERAL.CLASES
 {
-    internal class clSemestre : ICatalogo
+    // Semestre 1 ---- N Alumnos
+    internal class clSemestres
     {
-        private int idSemestre;
-        private string semestre;
+        private int id_semestre;
+        private string nombre;
 
-        public clSemestre(int idSemestre, string semestre)
+        public clSemestres() { }
+        public clSemestres(int id)
         {
-            this.idSemestre = idSemestre;
-            this.semestre = semestre;
+            id_semestre = id;
         }
+        public clSemestres(int id, string nombre)
+        {
+            id_semestre = id;
+            this.nombre = nombre;
+        }
+
         public string Guardar()
         {
-            return "Insert into tbl_Semestres (idSemestre, semestre) Values (" + idSemestre + ", '" + Conexion.Esc(semestre) + "')";
+            return "Insert into Tbl_Semestres (Id_Semestre, Nombre_semestre) Values (" + id_semestre +
+                   ", '" + Global.Esc(nombre) + "')";
         }
         public string Modificar()
         {
-            return "Update tbl_Semestres set semestre='" + Conexion.Esc(semestre) + "' where idSemestre=" + idSemestre;
+            return "Update Tbl_Semestres set Nombre_semestre='" + Global.Esc(nombre) + "' where Id_Semestre=" + id_semestre;
         }
         public string Buscar()
         {
-            return "Select * from tbl_Semestres where idSemestre = " + idSemestre;
+            return "Select * from Tbl_Semestres where Id_Semestre=" + id_semestre;
         }
         public string Eliminar()
         {
-            return "delete from tbl_Semestres where idSemestre = " + idSemestre;
+            return "delete from Tbl_Semestres where Id_Semestre=" + id_semestre;
+        }
+        public string consultageneral()
+        {
+            return "select * from Tbl_Semestres order by Id_Semestre";
         }
     }
 }

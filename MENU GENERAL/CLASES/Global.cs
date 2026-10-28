@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace MENU_GENERAL.CLASES
 {
@@ -11,11 +10,88 @@ namespace MENU_GENERAL.CLASES
         static public string bd = "BD_ESCOLAR";
         static public string server = @"E5\S1";
         static public string User = "sa";
-        static public string Password="hola1234";
+        static public string Password = "hola1234";
         static public string seguridad = "Persist Security Info=True";
-        static public string miconexion = "Data Source=" + server + ";Initial Catalog=" + bd + ";"+
-            seguridad+";User ID=" + User+";Password="+Password+";Encrypt=False";
-        
-        //Data Source=e5\s1;Initial Catalog=BD_ESCOLAR;Persist Security Info=True;User ID=sa;Password=***********;Encrypt=False
-    }//data adapter almacena 4 comandos. 
+        static public string miconexion = "Data Source=" + server + ";Initial Catalog=" + bd + ";" +
+            seguridad + ";User ID=" + User + ";Password=" + Password + ";Encrypt=False";
+
+        // ---------- AYUDAS COMUNES PARA TODOS LOS FORMULARIOS ----------
+
+        // Evita que un apóstrofe (O'Brien) rompa el INSERT/UPDATE
+        static public string Esc(string s)
+        {
+            return (s ?? "").Replace("'", "''");
+        }
+
+        // Traduce los errores de SQL más comunes (relaciones uno a muchos)
+        static public string MensajeError(Exception ex)
+        {
+            SqlException sql = ex as SqlException;
+            if (sql != null)
+            {
+                if (sql.Number == 547)
+                    return "No se puede completar la operación por la relación con otros registros.\n" +
+                           "- Al GUARDAR: verifique que el registro 'padre' (combo) exista.\n" +
+                           "- Al ELIMINAR: primero elimine o reasigne los registros que dependen de éste.";
+                if (sql.Number == 2627 || sql.Number == 2601)
+                    return "Ya existe un registro con esa clave.";
+            }
+            return ex.Message;
+        }
+
+        // Llena un combo desde una consulta (DisplayMember = lo que se ve, ValueMember = la llave)
+        static public void CargarCombo(ComboBox cmb, string sql, string display, string value)
+        {
+            Conexion c = new Conexion(sql);
+            DataSet ds = c.CONSULTAR();
+            cmb.DataSource = null;
+            cmb.DisplayMember = display;
+            cmb.ValueMember = value;
+            cmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmb.DataSource = ds.Tables["Tabla"];
+            cmb.SelectedIndex = -1;
+        }
+
+        static public void SeleccionarCombo(ComboBox cmb, object valor)
+        {
+            if (valor == null || valor == DBNull.Value) { cmb.SelectedIndex = -1; return; }
+            cmb.SelectedValue = Convert.ToInt32(valor);
+        }
+
+        static public bool LeerEntero(TextBox txt, string campo, out int valor)
+        {
+            if (!int.TryParse(txt.Text.Trim(), out valor))
+            {
+                MessageBox.Show("Capture un número válido en: " + campo, "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt.Focus();
+                return false;
+            }
+            return true;
+        }
+
+        static public bool CampoVacio(Control ctl, string campo)
+        {
+            if (string.IsNullOrWhiteSpace(ctl.Text))
+            {
+                MessageBox.Show("Capture: " + campo, "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ctl.Focus();
+                return true;
+            }
+            return false;
+        }
+
+        static public bool SeleccionVacia(ComboBox cmb, string campo)
+        {
+            if (cmb.SelectedIndex < 0 || cmb.SelectedValue == null)
+            {
+                MessageBox.Show("Seleccione: " + campo, "Validación",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmb.Focus();
+                return true;
+            }
+            return false;
+        }
+    }
 }

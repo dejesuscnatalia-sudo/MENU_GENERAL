@@ -1,46 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace MENU_GENERAL.CLASES
 {
+    // Departamento 1 ---- N Carreras
     internal class clCarreras
     {
-
         private int num_carrera;
         private string carrera;
+        private int id_departamento;
 
-        public clCarreras() { } //meterle constructores en blanco
-        public clCarreras(int num_carrera) {
+        public clCarreras() { }
+        public clCarreras(int num_carrera)
+        {
             this.num_carrera = num_carrera;
         }
-        public clCarreras(int num_carrera, string carrera)
+        public clCarreras(int num_carrera, string carrera, int id_departamento)
         {
             this.num_carrera = num_carrera;
             this.carrera = carrera;
+            this.id_departamento = id_departamento;
         }
+
         public string Guardar()
         {
-            return "Insert into tbl_Carreras Values (" + num_carrera + ", '" + carrera + "')";
+            return "Insert into tbl_Carreras (idCarrera, carrera, Id_Departamento) Values (" +
+                   num_carrera + ", '" + Global.Esc(carrera) + "', " + id_departamento + ")";
         }
         public string Modificar()
         {
-            return $"Update tbl_Carreras set carrera='{carrera}' where idCarrera={num_carrera}";
+            return "Update tbl_Carreras set carrera='" + Global.Esc(carrera) + "', Id_Departamento=" +
+                   id_departamento + " where idCarrera=" + num_carrera;
         }
         public string Buscar()
         {
-            return "Select * from tbl_Carreras where idCarrera= " + num_carrera;
+            return "Select * from tbl_Carreras where idCarrera = " + num_carrera;
         }
         public string Eliminar()
         {
-            return $"delete from tbl_Carreras where idCarrera = {num_carrera}";
+            return "delete from tbl_Carreras where idCarrera = " + num_carrera;
         }
-
-        public string consultageneral()//esto en poco datos. De cientos de miles, abrir búsqueda en una ventana
+        public string consultageneral()
         {
-            return "select * from tbl_Carreras";
+            return "select * from tbl_Carreras order by carrera";
         }
     }
 }

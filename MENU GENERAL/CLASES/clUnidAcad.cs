@@ -1,37 +1,51 @@
-﻿using MENU_GENERAL.ESCOLAR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MENU_GENERAL.CLASES
 {
-    internal class clUnidadAcademica : ICatalogo
+    // Municipio 1 ---- N Unidades Académicas  |  Unidad 1 ---- N Departamentos
+    internal class clUnidAcad
     {
-        private int idUnidad;
-        private string unidad;
+        private int id_unidad;
+        private string nombre;
+        private int id_municipio;
 
-        public clUnidadAcademica(int idUnidad, string unidad)
+        public clUnidAcad() { }
+        public clUnidAcad(int id)
         {
-            this.idUnidad = idUnidad;
-            this.unidad = unidad;
+            id_unidad = id;
         }
+        public clUnidAcad(int id, string nombre, int idMunicipio)
+        {
+            id_unidad = id;
+            this.nombre = nombre;
+            id_municipio = idMunicipio;
+        }
+
         public string Guardar()
         {
-            return "Insert into tbl_Unidades_Academicas (idUnidad, unidad) Values (" + idUnidad + ", '" + Conexion.Esc(unidad) + "')";
+            return "Insert into tbl_Unidades_Academicas (Id_Unidad, Nombre_unidad, Id_Municipio) Values (" +
+                   id_unidad + ", '" + Global.Esc(nombre) + "', " + id_municipio + ")";
         }
         public string Modificar()
         {
-            return "Update tbl_Unidades_Academicas set unidad='" + Conexion.Esc(unidad) + "' where idUnidad=" + idUnidad;
+            return "Update tbl_Unidades_Academicas set Nombre_unidad='" + Global.Esc(nombre) +
+                   "', Id_Municipio=" + id_municipio + " where Id_Unidad=" + id_unidad;
         }
         public string Buscar()
         {
-            return "Select * from tbl_Unidades_Academicas where idUnidad = " + idUnidad;
+            return "Select * from tbl_Unidades_Academicas where Id_Unidad=" + id_unidad;
         }
         public string Eliminar()
         {
-            return "delete from tbl_Unidades_Academicas where idUnidad = " + idUnidad;
+            return "delete from tbl_Unidades_Academicas where Id_Unidad=" + id_unidad;
+        }
+        public string consultageneral()
+        {
+            return "select * from tbl_Unidades_Academicas order by Nombre_unidad";
+        }
+        public string consultaMunicipios()
+        {
+            return "select * from tbl_Municipios order by Nombre_municipio";
         }
     }
 }

@@ -49,6 +49,9 @@
     <Compile Include="CLASES\Alumno.cs" />
     <Compile Include="CLASES\clAreaC.cs" />
     <Compile Include="CLASES\clCarreras.cs" />
+    <Compile Include="CLASES\clCatalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CLASES\clInfoRespaldo.cs" />
     <Compile Include="CLASES\clMaestro.cs" />
     <Compile Include="CLASES\clMaterias.cs" />

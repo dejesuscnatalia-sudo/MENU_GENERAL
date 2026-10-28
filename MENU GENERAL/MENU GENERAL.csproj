@@ -52,6 +52,7 @@
     <Compile Include="CLASES\clCatalogo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CLASES\clDepartamentos.cs" />
     <Compile Include="CLASES\clInfoRespaldo.cs" />
     <Compile Include="CLASES\clMaestro.cs" />
     <Compile Include="CLASES\clMaterias.cs" />

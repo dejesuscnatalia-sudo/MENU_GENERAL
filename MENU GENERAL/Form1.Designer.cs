@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.oPERACIONESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sUMAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,9 +47,9 @@
             this._carreraSToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dEPARTAMENTOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mATERIASToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sALIRToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.rESPALDOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rESPALDARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sALIRToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,13 +196,6 @@
             this.mATERIASToolStripMenuItem.Text = "MATERIAS";
             this.mATERIASToolStripMenuItem.Click += new System.EventHandler(this.mATERIASToolStripMenuItem_Click);
             // 
-            // sALIRToolStripMenuItem1
-            // 
-            this.sALIRToolStripMenuItem1.Name = "sALIRToolStripMenuItem1";
-            this.sALIRToolStripMenuItem1.Size = new System.Drawing.Size(61, 24);
-            this.sALIRToolStripMenuItem1.Text = "SALIR";
-            this.sALIRToolStripMenuItem1.Click += new System.EventHandler(this.sALIRToolStripMenuItem1_Click);
-            // 
             // rESPALDOToolStripMenuItem
             // 
             this.rESPALDOToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -214,8 +208,15 @@
             // rESPALDARToolStripMenuItem
             // 
             this.rESPALDARToolStripMenuItem.Name = "rESPALDARToolStripMenuItem";
-            this.rESPALDARToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.rESPALDARToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.rESPALDARToolStripMenuItem.Text = "RESPALDAR";
+            // 
+            // sALIRToolStripMenuItem1
+            // 
+            this.sALIRToolStripMenuItem1.Name = "sALIRToolStripMenuItem1";
+            this.sALIRToolStripMenuItem1.Size = new System.Drawing.Size(61, 24);
+            this.sALIRToolStripMenuItem1.Text = "SALIR";
+            this.sALIRToolStripMenuItem1.Click += new System.EventHandler(this.sALIRToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -225,7 +226,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = resources.GetString("$this.Text");
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

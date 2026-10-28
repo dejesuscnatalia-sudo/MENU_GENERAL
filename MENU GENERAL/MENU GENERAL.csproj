@@ -53,8 +53,11 @@
     <Compile Include="CLASES\clMaestro.cs" />
     <Compile Include="CLASES\clMaterias.cs" />
     <Compile Include="CLASES\clRespaldo.cs" />
+    <Compile Include="CLASES\clSemestres.cs" />
     <Compile Include="CLASES\clSUMAR.cs" />
     <Compile Include="CLASES\clTrapecio.cs" />
+    <Compile Include="CLASES\clTurnocs.cs" />
+    <Compile Include="CLASES\clUnidAcad.cs" />
     <Compile Include="CLASES\Conexion.cs" />
     <Compile Include="CLASES\Global.cs" />
     <Compile Include="ESCOLAR\FRMMaterias.cs">
@@ -80,6 +83,12 @@
     </Compile>
     <Compile Include="ESCOLAR\FRM_CARRERA.Designer.cs">
       <DependentUpon>FRM_CARRERA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ESCOLAR\FRM_Departamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ESCOLAR\FRM_Departamentos.Designer.cs">
+      <DependentUpon>FRM_Departamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="ESCOLAR\FRM_SEMESTRES.cs">
       <SubType>Form</SubType>
@@ -161,6 +170,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ESCOLAR\FRM_CARRERA.resx">
       <DependentUpon>FRM_CARRERA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ESCOLAR\FRM_SEMESTRES.resx">
+      <DependentUpon>FRM_SEMESTRES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ESCOLAR\FRM_TURNO.resx">
+      <DependentUpon>FRM_TURNO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ESCOLAR\FRM_UNIDADES_ACADEMICAS.resx">
       <DependentUpon>FRM_UNIDADES_ACADEMICAS.cs</DependentUpon>

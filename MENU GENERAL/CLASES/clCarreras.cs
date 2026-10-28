@@ -12,7 +12,7 @@ namespace MENU_GENERAL.CLASES
         private int num_carrera;
         private string carrera;
 
-        public clCarreras() { }
+        public clCarreras() { } //meterle constructores en blanco
         public clCarreras(int num_carrera) {
             this.num_carrera = num_carrera;
         }
@@ -36,6 +36,11 @@ namespace MENU_GENERAL.CLASES
         public string Eliminar()
         {
             return $"delete from tbl_Carreras where idCarrera = {num_carrera}";
+        }
+
+        public string consultageneral()//esto en poco datos. De cientos de miles, abrir búsqueda en una ventana
+        {
+            return "select * from tbl_Carreras";
         }
     }
 }

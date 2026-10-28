@@ -50,7 +50,7 @@
             this.borrarbtn = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbcarreras = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -99,7 +99,6 @@
             this.textBoxNumero.Name = "textBoxNumero";
             this.textBoxNumero.Size = new System.Drawing.Size(100, 22);
             this.textBoxNumero.TabIndex = 5;
-            this.textBoxNumero.Leave += new System.EventHandler(this.textBoxNumero_Leave);
             // 
             // textBox_nombre
             // 
@@ -206,6 +205,7 @@
             this.registrarbtn.Name = "registrarbtn";
             this.registrarbtn.Size = new System.Drawing.Size(39, 39);
             this.registrarbtn.Text = "toolStripButton2";
+            this.registrarbtn.Click += new System.EventHandler(this.registrarbtn_Click);
             // 
             // borrarbtn
             // 
@@ -234,13 +234,14 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(78, 20);
             this.toolStripStatusLabel1.Text = "USUARIO: ";
             // 
-            // comboBox1
+            // cmbcarreras
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(172, 280);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 24);
-            this.comboBox1.TabIndex = 15;
+            this.cmbcarreras.FormattingEnabled = true;
+            this.cmbcarreras.Location = new System.Drawing.Point(172, 280);
+            this.cmbcarreras.Name = "cmbcarreras";
+            this.cmbcarreras.Size = new System.Drawing.Size(328, 24);
+            this.cmbcarreras.TabIndex = 15;
+            this.cmbcarreras.SelectedIndexChanged += new System.EventHandler(this.cmbcarreras_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -257,7 +258,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbcarreras);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.textBoxCorreo);
@@ -269,6 +270,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FRMMAESTROS";
             this.Text = "MAESTROS";
@@ -306,7 +308,7 @@
         private System.Windows.Forms.ToolStripButton borrarbtn;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbcarreras;
         private System.Windows.Forms.Label label5;
     }
 }

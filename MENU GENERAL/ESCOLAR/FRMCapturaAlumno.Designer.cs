@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.nombre = new System.Windows.Forms.TextBox();
+            this.matrícula = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.carrera = new System.Windows.Forms.ComboBox();
+            this.guardar = new System.Windows.Forms.Button();
             this.lstHistorial = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.correo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.teléfono = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // nombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(251, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 0;
+            this.nombre.Location = new System.Drawing.Point(251, 45);
+            this.nombre.Name = "nombre";
+            this.nombre.Size = new System.Drawing.Size(100, 22);
+            this.nombre.TabIndex = 0;
             // 
-            // textBox2
+            // matrícula
             // 
-            this.textBox2.Location = new System.Drawing.Point(251, 88);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 1;
+            this.matrícula.Location = new System.Drawing.Point(251, 88);
+            this.matrícula.Name = "matrícula";
+            this.matrícula.Size = new System.Drawing.Size(100, 22);
+            this.matrícula.TabIndex = 1;
             // 
             // label1
             // 
@@ -74,30 +74,30 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Matrícula";
             // 
-            // comboBox1
+            // carrera
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.carrera.FormattingEnabled = true;
+            this.carrera.Items.AddRange(new object[] {
             "Ingeniería en Sistemas",
             "Ingeniería Industrial",
             "Ingeniería en Software",
             "Ingeniería Ambiental"});
-            this.comboBox1.Location = new System.Drawing.Point(251, 128);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 24);
-            this.comboBox1.TabIndex = 4;
-            this.comboBox1.Text = "Seleccionar carrera";
+            this.carrera.Location = new System.Drawing.Point(251, 128);
+            this.carrera.Name = "carrera";
+            this.carrera.Size = new System.Drawing.Size(200, 24);
+            this.carrera.TabIndex = 4;
+            this.carrera.Text = "Seleccionar carrera";
             // 
-            // button1
+            // guardar
             // 
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(507, 84);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 26);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Guardar Alumno";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.guardar.AutoSize = true;
+            this.guardar.Location = new System.Drawing.Point(507, 84);
+            this.guardar.Name = "guardar";
+            this.guardar.Size = new System.Drawing.Size(114, 26);
+            this.guardar.TabIndex = 5;
+            this.guardar.Text = "Guardar Alumno";
+            this.guardar.UseVisualStyleBackColor = true;
+            this.guardar.Click += new System.EventHandler(this.guardar_Click);
             // 
             // lstHistorial
             // 
@@ -127,12 +127,12 @@
             this.label4.Text = "Correo";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox3
+            // correo
             // 
-            this.textBox3.Location = new System.Drawing.Point(251, 176);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 8;
+            this.correo.Location = new System.Drawing.Point(251, 176);
+            this.correo.Name = "correo";
+            this.correo.Size = new System.Drawing.Size(100, 22);
+            this.correo.TabIndex = 8;
             // 
             // label5
             // 
@@ -143,12 +143,12 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Teléfono";
             // 
-            // textBox4
+            // teléfono
             // 
-            this.textBox4.Location = new System.Drawing.Point(251, 215);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 10;
+            this.teléfono.Location = new System.Drawing.Point(251, 215);
+            this.teléfono.Name = "teléfono";
+            this.teléfono.Size = new System.Drawing.Size(100, 22);
+            this.teléfono.TabIndex = 10;
             // 
             // FRMCapturaAlumno
             // 
@@ -157,17 +157,17 @@
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.teléfono);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.correo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lstHistorial);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.guardar);
+            this.Controls.Add(this.carrera);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.matrícula);
+            this.Controls.Add(this.nombre);
             this.Name = "FRMCapturaAlumno";
             this.Text = "FRMCapturaAlumno";
             this.ResumeLayout(false);
@@ -177,17 +177,17 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox nombre;
+        private System.Windows.Forms.TextBox matrícula;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox carrera;
+        private System.Windows.Forms.Button guardar;
         private System.Windows.Forms.ListBox lstHistorial;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox correo;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox teléfono;
     }
 }

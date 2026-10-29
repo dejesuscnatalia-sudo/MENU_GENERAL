@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MENU_GENERAL.CLASES;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MENU_GENERAL.CLASES
@@ -15,133 +9,68 @@ namespace MENU_GENERAL.CLASES
     {
         public FRMMaterias()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+
+            guardarToolStripMenuItem.Click += (s, ev) => btGuardar_Click(s, ev);
+            buscarToolStripMenuItem.Click += (s, ev) => btBuscar_Click(s, ev);
+            eliminarToolStripMenuItem.Click += (s, ev) => btElim_Click(s, ev);
+            salirToolStripMenuItem.Click += (s, ev) => Close();
+            txtbClave.Leave += (s, ev) => Global.Proteger(() => buscar(false));
         }
 
-
-        CLASES.Conexion c;
         private void registro()
         {
-            clMaterias oCarrera = new clMaterias(int.Parse(txtbClave.Text));
-            DataSet ds = new DataSet();
-            c = new CLASES.Conexion(oCarrera.Buscar());
-            ds = c.CONSULTAR();
-            if (ds.Tables["Tabla"].Rows.Count > 0)
-            {
-                oCarrera = new clMaterias(int.Parse(txtbClave.Text), txtbMateria.Text);
-                c = new CLASES.Conexion(oCarrera.Modificar());
-                c.EJECUTAR();
-                MessageBox.Show("Registro Modificado con Éxito");
-            }
-            else
-            {
-                oCarrera = new clMaterias(int.Parse(txtbClave.Text), txtbMateria.Text);
-                c = new CLASES.Conexion(oCarrera.Guardar());
-                c.EJECUTAR();
-                MessageBox.Show("Registro Guardado Con Éxito");
-            }
+            int id;
+            if (!Global.LeerEntero(txtbClave, "Número de materia", out id)) return;
+            if (Global.CampoVacio(txtbMateria, "Nombre de materia")) return;
+
+            clMaterias o = new clMaterias(id, txtbMateria.Text.Trim());
+            bool existe = new Conexion(o.Buscar()).CONSULTAR().Tables["Tabla"].Rows.Count > 0;
+
+            new Conexion(existe ? o.Modificar() : o.Guardar()).EJECUTAR();
+            MessageBox.Show(existe ? "Registro modificado con éxito" : "Registro guardado con éxito");
         }
-        private void buscar()
+
+        private void buscar(bool avisar)
         {
-            clMaterias oCarrera = new clMaterias(int.Parse(txtbClave.Text));
-            DataSet ds = new DataSet();
-            c = new CLASES.Conexion(oCarrera.Buscar());
-            ds = c.CONSULTAR();
-            if (ds.Tables["Tabla"].Rows.Count > 0)
+            int id;
+            if (!int.TryParse(txtbClave.Text.Trim(), out id))
             {
-                txtbClave.Text = ds.Tables["Tabla"].Rows[0]["id_Materia"].ToString();
-                txtbMateria.Text = ds.Tables["Tabla"].Rows[0]["nombre"].ToString();
-
-
+                if (avisar) MessageBox.Show("Capture una clave numérica.");
+                return;
             }
-            else
-            {
+
+            DataTable t = new Conexion(new clMaterias(id).Buscar()).CONSULTAR().Tables["Tabla"];
+            if (t.Rows.Count > 0)
+                txtbMateria.Text = t.Rows[0]["nombre"].ToString();
+            else if (avisar)
                 MessageBox.Show("No existe este dato");
-            }
         }
 
         private void eliminar()
         {
-            clMaterias oCarrera = new clMaterias(int.Parse(txtbClave.Text));
-            DataSet ds = new DataSet();
-            c = new CLASES.Conexion(oCarrera.Buscar());
-            ds = c.CONSULTAR();
-            if (ds.Tables["Tabla"].Rows.Count > 0)
-            {
-                if (MessageBox.Show("¿Desea eliminar este registro?",
-                "Eliminar",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    c = new CLASES.Conexion(oCarrera.Eliminar());
-                    c.EJECUTAR();
-                    MessageBox.Show("El registro se borró correctamente");
+            int id;
+            if (!Global.LeerEntero(txtbClave, "Número de materia", out id)) return;
 
-                }
-            }
-            else
-            { //suena a comunicacion
+            clMaterias o = new clMaterias(id);
+            if (new Conexion(o.Buscar()).CONSULTAR().Tables["Tabla"].Rows.Count == 0)
+            {
                 MessageBox.Show("El registro no existe");
+                return;
             }
+            if (MessageBox.Show("¿Desea eliminar este registro?", "Eliminar",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+
+            new Conexion(o.Eliminar()).EJECUTAR();
+            MessageBox.Show("El registro se borró correctamente");
+            txtbClave.Clear();
+            txtbMateria.Clear();
         }
 
-        private void btGuardar_Click(object sender, EventArgs e)
-        {
-            registro();
-        }
-
-        private void btBuscar_Click(object sender, EventArgs e)
-        {
-            buscar();
-        }
-
-        private void btElim_Click(object sender, EventArgs e)
-        {
-            eliminar();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            /*clMaterias materia = new clMaterias(txtbClave.Text, txtbMateria.Text);
-            string mensaje = materia.Guardar();
-            MessageBox.Show(mensaje);*/
-        }
-
-        private void btnBusc_Click(object sender, EventArgs e)
-        {
-            /*clMaterias materia = new clMaterias();
-
-            clMaterias resultado = materia.Buscar(txtbClave.Text);
-            if (resultado != null)
-            {
-                txtbMateria.Text = resultado.Nombre;
-            }
-            else
-            {
-                MessageBox.Show("La materia no existe.");
-            }*/
-        }
-
-        private void btnModif_Click(object sender, EventArgs e)
-        {
-            /*clMaterias materia = new clMaterias(txtbClave.Text, txtbMateria.Text);
-            string mensaje = materia.Modificar();
-            MessageBox.Show(mensaje);
-        */
-        }
-
-        private void btnElim_Click(object sender, EventArgs e)
-        {
-            /*clMaterias materia=new clMaterias();
-            materia.Clave = txtbClave.Text;
-            string mensaje = materia.Eliminar();
-            MessageBox.Show(mensaje);
-            */
-        }
+        // Handlers que el Designer ya referencia
+        private void btGuardar_Click(object sender, EventArgs e) { Global.Proteger(registro); }
+        private void btBuscar_Click(object sender, EventArgs e) { Global.Proteger(() => buscar(true)); }
+        private void btElim_Click(object sender, EventArgs e) { Global.Proteger(eliminar); }
+        private void label1_Click(object sender, EventArgs e) { }
     }
 }

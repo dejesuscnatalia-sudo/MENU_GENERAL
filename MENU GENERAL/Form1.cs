@@ -86,24 +86,6 @@ namespace MENU_GENERAL
             oRespaldo.Show();
         }
 
-        private void dEPARTAMENTOSToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            dEPARTAMENTOSToolStripMenuItem_Click.Text = "UNIDADES ACADÉMICAS";
-            dEPARTAMENTOSToolStripMenuItem.Click += (s, e) => new FRM_UNIDADES_ACADEMICAS().Show();
-            eSCOLARToolStripMenuItem.DropDownItems.Add("TURNOS", null, (s, e) => new FRM_TURNO().Show());
-            eSCOLARToolStripMenuItem.DropDownItems.Add("SEMESTRES", null, (s, e) => new FRM_SEMESTRES().Show());
-        }
-
-        private void sALIRToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void carreraSToolStripMenuItem_Click(object sender, EventArgs e)   // REGISTRAR ALUMNOS
-        {
-            FRMCapturaAlumno oRegistro = new FRMCapturaAlumno();
-            oRegistro.Show();
-        }
-    
+        
     }
 }

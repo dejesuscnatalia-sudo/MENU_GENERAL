@@ -2,107 +2,74 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MENU_GENERAL.ESCOLAR
 {
     public partial class FRMMAESTROS : Form
     {
-        Conexion c;
-
         public FRMMAESTROS()
         {
             InitializeComponent();
-            CargarCarreras();
+
+            Global.Proteger(() =>
+                new Conexion("select idCarrera, carrera from tbl_Carreras order by carrera")
+                    .LlenarCombo(cmbcarreras, "idCarrera", "carrera"));
+
+            // Conexiones que no estaban en el Designer
+            textBoxNumero.Leave += textBoxNumero_Leave;
+            registrarbtn.Click += (s, ev) => Global.Proteger(() => buscar(true));
+            registrarToolStripMenuItem.Click += (s, ev) => Global.Proteger(metregistrar);
+            consultarToolStripMenuItem.Click += (s, ev) => Global.Proteger(() => buscar(true));
+            eliminarToolStripMenuItem.Click += (s, ev) => Global.Proteger(eliminar);
+            salirToolStripMenuItem.Click += (s, ev) => Close();
         }
-/*
-            // Conexiones que no estaban en el diseñador
-            registrarbtn.Click += (s, e) => buscar(true);
-            registrarToolStripMenuItem.Click += (s, e) => metregistrar();
-            consultarToolStripMenuItem.Click += (s, e) => buscar(true);
-            eliminarToolStripMenuItem.Click += (s, e) => eliminar();
-            salirToolStripMenuItem.Click += (s, e) => Close();
-        }
-*/
-        private void CargarCarreras()
-        {
-            new Conexion("Select idCarrera, carrera from tbl_Carreras order by carrera")
-                .LlenarCombo(cmbcarreras, "idCarrera", "carrera");
-        }
-        
 
         private void textBoxNumero_Leave(object sender, EventArgs e)
         {
-            buscar(false);
+            Global.Proteger(() => buscar(false));
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)   // botón GUARDAR
         {
-            metregistrar();
+            Global.Proteger(metregistrar);
         }
 
         private void borrarbtn_Click(object sender, EventArgs e)
         {
-            eliminar();
+            Global.Proteger(eliminar);
         }
 
         private void metregistrar()
         {
             int num;
-            if (!int.TryParse(textBoxNumero.Text, out num))
-            {
-                MessageBox.Show("Captura un número de empleado válido.");
-                return;
-            }
-            if (textBox_nombre.Text.Trim() == "" || cmbcarreras.SelectedValue == null)
-            {
-                MessageBox.Show("Captura el nombre y selecciona una carrera.");
-                return;
-            }
+            if (!Global.LeerEntero(textBoxNumero, "Número de empleado", out num)) return;
+            if (Global.CampoVacio(textBox_nombre, "Nombre")) return;
+            if (Global.SeleccionVacia(cmbcarreras, "Carrera")) return;
 
-            clMaestro oMaestro = new clMaestro(num);
-            DataSet ds = new Conexion(oMaestro.Buscar()).CONSULTAR();
+            clMaestro o = new clMaestro(num, textBox_nombre.Text.Trim(), textBoxTelef.Text.Trim(),
+                                        textBoxCorreo.Text.Trim(), Convert.ToInt32(cmbcarreras.SelectedValue));
+            bool existe = new Conexion(o.Buscar()).CONSULTAR().Tables["Tabla"].Rows.Count > 0;
 
-            oMaestro = new clMaestro(num, textBox_nombre.Text.Trim(), textBoxTelef.Text.Trim(),
-                                     textBoxCorreo.Text.Trim(), Convert.ToInt32(cmbcarreras.SelectedValue));
-
-            if (ds.Tables["Tabla"].Rows.Count > 0)
-            {
-                c = new Conexion(oMaestro.Modificar());
-                c.EJECUTAR();
-                MessageBox.Show("Registro modificado con éxito");
-            }
-            else
-            {
-                c = new Conexion(oMaestro.Guardar());
-                c.EJECUTAR();
-                MessageBox.Show("Registro guardado con éxito");
-            }
+            new Conexion(existe ? o.Modificar() : o.Guardar()).EJECUTAR();
+            MessageBox.Show(existe ? "Registro modificado con éxito" : "Registro guardado con éxito");
         }
 
         private void buscar(bool avisar)
         {
             int num;
-            if (!int.TryParse(textBoxNumero.Text, out num))
+            if (!int.TryParse(textBoxNumero.Text.Trim(), out num))
             {
-                if (avisar) MessageBox.Show("Captura un número de empleado válido.");
+                if (avisar) MessageBox.Show("Capture un número de empleado válido.");
                 return;
             }
 
-            clMaestro oMaestro = new clMaestro(num);
-            DataTable t = new Conexion(oMaestro.Buscar()).CONSULTAR().Tables["Tabla"];
-
+            DataTable t = new Conexion(new clMaestro(num).Buscar()).CONSULTAR().Tables["Tabla"];
             if (t.Rows.Count > 0)
             {
-                textBoxNumero.Text = t.Rows[0]["num_Empleado"].ToString();
                 textBox_nombre.Text = t.Rows[0]["nombre"].ToString();
                 textBoxCorreo.Text = t.Rows[0]["correo"].ToString();
                 textBoxTelef.Text = t.Rows[0]["telefono"].ToString();
-
-                if (t.Rows[0]["idCarrera"] != DBNull.Value)
-                    cmbcarreras.SelectedValue = Convert.ToInt32(t.Rows[0]["idCarrera"]);
-                else
-                    cmbcarreras.SelectedIndex = -1;
+                Global.SeleccionarCombo(cmbcarreras, t.Rows[0]["idCarrera"]);
             }
             else if (avisar)
             {
@@ -113,32 +80,22 @@ namespace MENU_GENERAL.ESCOLAR
         private void eliminar()
         {
             int num;
-            if (!int.TryParse(textBoxNumero.Text, out num))
-            {
-                MessageBox.Show("Captura un número de empleado válido.");
-                return;
-            }
+            if (!Global.LeerEntero(textBoxNumero, "Número de empleado", out num)) return;
 
-            clMaestro oMaestro = new clMaestro(num);
-            DataSet ds = new Conexion(oMaestro.Buscar()).CONSULTAR();
-
-            if (ds.Tables["Tabla"].Rows.Count > 0)
-            {
-                if (MessageBox.Show("¿Desea eliminar este registro?", "Eliminar",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    c = new Conexion(oMaestro.Eliminar());
-                    c.EJECUTAR();                       // antes faltaba esta línea
-                    MessageBox.Show("El registro se borró correctamente");
-                    textBoxNumero.Clear(); textBox_nombre.Clear();
-                    textBoxCorreo.Clear(); textBoxTelef.Clear();
-                    cmbcarreras.SelectedIndex = -1;
-                }
-            }
-            else
+            clMaestro o = new clMaestro(num);
+            if (new Conexion(o.Buscar()).CONSULTAR().Tables["Tabla"].Rows.Count == 0)
             {
                 MessageBox.Show("El registro no existe");
+                return;
             }
+            if (MessageBox.Show("¿Desea eliminar este registro?", "Eliminar",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+
+            new Conexion(o.Eliminar()).EJECUTAR();
+            MessageBox.Show("El registro se borró correctamente");
+            textBoxNumero.Clear(); textBox_nombre.Clear();
+            textBoxCorreo.Clear(); textBoxTelef.Clear();
+            cmbcarreras.SelectedIndex = -1;
         }
     }
 }

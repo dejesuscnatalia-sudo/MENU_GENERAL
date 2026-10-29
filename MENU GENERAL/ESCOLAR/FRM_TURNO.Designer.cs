@@ -1,4 +1,4 @@
-﻿```csharp
+﻿
 namespace MENU_GENERAL.ESCOLAR
 {
     partial class FRM_TURNO

@@ -2,7 +2,6 @@ using System;
 
 namespace MENU_GENERAL.CLASES
 {
-    // Departamento 1 ---- N Carreras
     internal class clCarreras
     {
         private int num_carrera;
@@ -10,10 +9,7 @@ namespace MENU_GENERAL.CLASES
         private int id_departamento;
 
         public clCarreras() { }
-        public clCarreras(int num_carrera)
-        {
-            this.num_carrera = num_carrera;
-        }
+        public clCarreras(int num_carrera) { this.num_carrera = num_carrera; }
         public clCarreras(int num_carrera, string carrera, int id_departamento)
         {
             this.num_carrera = num_carrera;
@@ -23,12 +19,12 @@ namespace MENU_GENERAL.CLASES
 
         public string Guardar()
         {
-            return "Insert into tbl_Carreras (idCarrera, carrera, Id_Departamento) Values (" +
+            return "Insert into tbl_Carreras (idCarrera, carrera, id_Departamento) Values (" +
                    num_carrera + ", '" + Global.Esc(carrera) + "', " + id_departamento + ")";
         }
         public string Modificar()
         {
-            return "Update tbl_Carreras set carrera='" + Global.Esc(carrera) + "', Id_Departamento=" +
+            return "Update tbl_Carreras set carrera='" + Global.Esc(carrera) + "', id_Departamento=" +
                    id_departamento + " where idCarrera=" + num_carrera;
         }
         public string Buscar()

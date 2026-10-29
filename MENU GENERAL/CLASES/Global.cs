@@ -1,5 +1,5 @@
 using System;
-using System.Data;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -15,15 +15,13 @@ namespace MENU_GENERAL.CLASES
         static public string miconexion = "Data Source=" + server + ";Initial Catalog=" + bd + ";" +
             seguridad + ";User ID=" + User + ";Password=" + Password + ";Encrypt=False";
 
-        // ---------- AYUDAS COMUNES PARA TODOS LOS FORMULARIOS ----------
-
         // Evita que un apóstrofe (O'Brien) rompa el INSERT/UPDATE
         static public string Esc(string s)
         {
             return (s ?? "").Replace("'", "''");
         }
 
-        // Traduce los errores de SQL más comunes (relaciones uno a muchos)
+        // Traduce los errores SQL más comunes (relaciones uno a muchos)
         static public string MensajeError(Exception ex)
         {
             SqlException sql = ex as SqlException;
@@ -39,23 +37,27 @@ namespace MENU_GENERAL.CLASES
             return ex.Message;
         }
 
-        // Llena un combo desde una consulta (DisplayMember = lo que se ve, ValueMember = la llave)
-        static public void CargarCombo(ComboBox cmb, string sql, string display, string value)
+        // Ejecuta una acción y muestra el error amigable en vez de tumbar la aplicación
+        static public void Proteger(Action accion)
         {
-            Conexion c = new Conexion(sql);
-            DataSet ds = c.CONSULTAR();
-            cmb.DataSource = null;
-            cmb.DisplayMember = display;
-            cmb.ValueMember = value;
-            cmb.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmb.DataSource = ds.Tables["Tabla"];
-            cmb.SelectedIndex = -1;
+            try { accion(); }
+            catch (Exception ex)
+            {
+                if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
+                MessageBox.Show(MensajeError(ex), "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         static public void SeleccionarCombo(ComboBox cmb, object valor)
         {
-            if (valor == null || valor == DBNull.Value) { cmb.SelectedIndex = -1; return; }
-            cmb.SelectedValue = Convert.ToInt32(valor);
+            int id;
+            if (valor == null || valor == DBNull.Value ||
+                !int.TryParse(Convert.ToString(valor), out id))
+            {
+                cmb.SelectedIndex = -1;
+                return;
+            }
+            cmb.SelectedValue = id;
         }
 
         static public bool LeerEntero(TextBox txt, string campo, out int valor)

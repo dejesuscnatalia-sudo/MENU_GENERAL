@@ -50,6 +50,9 @@
             this.rESPALDOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rESPALDARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sALIRToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uNIDADESACADEMICASToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sEMESTRESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tURNOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,7 +160,10 @@
             this.rEGISTRARMAESTROSToolStripMenuItem,
             this._carreraSToolStripMenuItem1,
             this.dEPARTAMENTOSToolStripMenuItem,
-            this.mATERIASToolStripMenuItem});
+            this.mATERIASToolStripMenuItem,
+            this.uNIDADESACADEMICASToolStripMenuItem,
+            this.sEMESTRESToolStripMenuItem,
+            this.tURNOSToolStripMenuItem});
             this.eSCOLARToolStripMenuItem.Name = "eSCOLARToolStripMenuItem";
             this.eSCOLARToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.eSCOLARToolStripMenuItem.Text = "ESCOLAR";
@@ -165,35 +171,35 @@
             // _carreraSToolStripMenuItem
             // 
             this._carreraSToolStripMenuItem.Name = "_carreraSToolStripMenuItem";
-            this._carreraSToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this._carreraSToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this._carreraSToolStripMenuItem.Text = "REGISTRAR ALUMNOS";
             this._carreraSToolStripMenuItem.Click += new System.EventHandler(this._carreraSToolStripMenuItem_Click);
             // 
             // rEGISTRARMAESTROSToolStripMenuItem
             // 
             this.rEGISTRARMAESTROSToolStripMenuItem.Name = "rEGISTRARMAESTROSToolStripMenuItem";
-            this.rEGISTRARMAESTROSToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.rEGISTRARMAESTROSToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.rEGISTRARMAESTROSToolStripMenuItem.Text = "REGISTRAR MAESTROS";
             this.rEGISTRARMAESTROSToolStripMenuItem.Click += new System.EventHandler(this.rEGISTRARMAESTROSToolStripMenuItem_Click);
             // 
             // _carreraSToolStripMenuItem1
             // 
             this._carreraSToolStripMenuItem1.Name = "_carreraSToolStripMenuItem1";
-            this._carreraSToolStripMenuItem1.Size = new System.Drawing.Size(246, 26);
+            this._carreraSToolStripMenuItem1.Size = new System.Drawing.Size(261, 26);
             this._carreraSToolStripMenuItem1.Text = "CARRERAS";
             this._carreraSToolStripMenuItem1.Click += new System.EventHandler(this._carreraSToolStripMenuItem1_Click);
             // 
             // dEPARTAMENTOSToolStripMenuItem
             // 
             this.dEPARTAMENTOSToolStripMenuItem.Name = "dEPARTAMENTOSToolStripMenuItem";
-            this.dEPARTAMENTOSToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.dEPARTAMENTOSToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.dEPARTAMENTOSToolStripMenuItem.Text = "DEPARTAMENTOS";
             this.dEPARTAMENTOSToolStripMenuItem.Click += new System.EventHandler(this.dEPARTAMENTOSToolStripMenuItem_Click);
             // 
             // mATERIASToolStripMenuItem
             // 
             this.mATERIASToolStripMenuItem.Name = "mATERIASToolStripMenuItem";
-            this.mATERIASToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.mATERIASToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
             this.mATERIASToolStripMenuItem.Text = "MATERIAS";
             this.mATERIASToolStripMenuItem.Click += new System.EventHandler(this.mATERIASToolStripMenuItem_Click);
             // 
@@ -218,6 +224,27 @@
             this.sALIRToolStripMenuItem1.Size = new System.Drawing.Size(61, 24);
             this.sALIRToolStripMenuItem1.Text = "SALIR";
             this.sALIRToolStripMenuItem1.Click += new System.EventHandler(this.sALIRToolStripMenuItem1_Click);
+            // 
+            // uNIDADESACADEMICASToolStripMenuItem
+            // 
+            this.uNIDADESACADEMICASToolStripMenuItem.Name = "uNIDADESACADEMICASToolStripMenuItem";
+            this.uNIDADESACADEMICASToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
+            this.uNIDADESACADEMICASToolStripMenuItem.Text = "UNIDADES ACADEMICAS";
+            this.uNIDADESACADEMICASToolStripMenuItem.Click += new System.EventHandler(this.uNIDADESACADEMICASToolStripMenuItem_Click);
+            // 
+            // sEMESTRESToolStripMenuItem
+            // 
+            this.sEMESTRESToolStripMenuItem.Name = "sEMESTRESToolStripMenuItem";
+            this.sEMESTRESToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
+            this.sEMESTRESToolStripMenuItem.Text = "SEMESTRES";
+            this.sEMESTRESToolStripMenuItem.Click += new System.EventHandler(this.sEMESTRESToolStripMenuItem_Click);
+            // 
+            // tURNOSToolStripMenuItem
+            // 
+            this.tURNOSToolStripMenuItem.Name = "tURNOSToolStripMenuItem";
+            this.tURNOSToolStripMenuItem.Size = new System.Drawing.Size(261, 26);
+            this.tURNOSToolStripMenuItem.Text = "TURNOS";
+            this.tURNOSToolStripMenuItem.Click += new System.EventHandler(this.tURNOSToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -259,6 +286,9 @@
         private System.Windows.Forms.ToolStripMenuItem mATERIASToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rESPALDOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rESPALDARToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uNIDADESACADEMICASToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sEMESTRESToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tURNOSToolStripMenuItem;
     }
 }
 

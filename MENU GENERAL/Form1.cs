@@ -59,7 +59,8 @@ namespace MENU_GENERAL
        
         private void _carreraSToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FRMCapturaAlumno O = new FRMCapturaAlumno();
+            O.Show();
         }
 
         private void rEGISTRARMAESTROSToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,6 +87,33 @@ namespace MENU_GENERAL
             oRespaldo.Show();
         }
 
-        
+        private void sALIRToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void dEPARTAMENTOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRM_Departamentos o = new FRM_Departamentos();
+            o.Show();
+        }
+
+        private void uNIDADESACADEMICASToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRM_UNIDADES_ACADEMICAS o = new FRM_UNIDADES_ACADEMICAS();
+            o.Show();
+        }
+
+        private void sEMESTRESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRM_SEMESTRES o = new FRM_SEMESTRES();
+            o.Show();
+        }
+
+        private void tURNOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRM_TURNO o = new FRM_TURNO();
+            o.Show();
+        }
     }
 }

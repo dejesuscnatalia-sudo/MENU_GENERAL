@@ -30,35 +30,35 @@ namespace MENU_GENERAL.REGISTRO_ALUMNOS
             btnEliminar.Click += (s, ev) => Global.Proteger(EliminarAlumno);
 
             Global.Proteger(CargarCarreras);
-            textBox2.Leave += (s, ev) => Global.Proteger(() => BuscarAlumno(false));
+            matrícula.Leave += (s, ev) => Global.Proteger(() => BuscarAlumno(false));
         }
 
         private void CargarCarreras()
         {
             new Conexion("Select idCarrera, carrera from tbl_Carreras order by carrera")
-                .LlenarCombo(comboBox1, "idCarrera", "carrera");
+                .LlenarCombo(carrera, "idCarrera", "carrera");
         }
 
-        private void button1_Click(object sender, EventArgs e)    // GUARDAR
+        private void guardar_Click(object sender, EventArgs e)    // GUARDAR
         {
             Global.Proteger(GuardarAlumno);
         }
 
         private void GuardarAlumno()
         {
-            if (Global.CampoVacio(textBox2, "Matrícula") ||
-                Global.CampoVacio(textBox1, "Nombre") ||
-                Global.SeleccionVacia(comboBox1, "Carrera")) return;
+            if (Global.CampoVacio(matrícula, "Matrícula") ||
+                Global.CampoVacio(nombre, "Nombre") ||
+                Global.SeleccionVacia(carrera, "Carrera")) return;
 
             // Orden del constructor: matrícula, nombre, carrera, teléfono, correo
-            Alumno alumno = new Alumno(textBox2.Text.Trim(), textBox1.Text.Trim(),
-                Convert.ToInt32(comboBox1.SelectedValue), textBox4.Text.Trim(), textBox3.Text.Trim());
+            Alumno alumno = new Alumno(matrícula.Text.Trim(), nombre.Text.Trim(),
+                Convert.ToInt32(carrera.SelectedValue), teléfono.Text.Trim(), correo.Text.Trim());
 
             bool existe = new Conexion(alumno.Buscar()).CONSULTAR().Tables["Tabla"].Rows.Count > 0;
             new Conexion(existe ? alumno.Modificar() : alumno.Guardar()).EJECUTAR();
             MessageBox.Show(existe ? "Alumno modificado con éxito" : "Alumno guardado con éxito");
 
-            lstHistorial.Items.Add(alumno.ObtenerDatos(comboBox1.Text));
+            lstHistorial.Items.Add(alumno.ObtenerDatos(carrera.Text));
             if (contador < RegistroAlumno.Length)
             {
                 alumno.GuardarEnArreglo(RegistroAlumno, contador);
@@ -69,19 +69,19 @@ namespace MENU_GENERAL.REGISTRO_ALUMNOS
 
         private void BuscarAlumno(bool avisar)
         {
-            if (textBox2.Text.Trim() == "")
+            if (matrícula.Text.Trim() == "")
             {
                 if (avisar) MessageBox.Show("Capture la matrícula.");
                 return;
             }
 
-            DataTable t = new Conexion(new Alumno(textBox2.Text.Trim()).Buscar()).CONSULTAR().Tables["Tabla"];
+            DataTable t = new Conexion(new Alumno(matrícula.Text.Trim()).Buscar()).CONSULTAR().Tables["Tabla"];
             if (t.Rows.Count > 0)
             {
-                textBox1.Text = t.Rows[0]["nombre"].ToString();
-                textBox3.Text = t.Rows[0]["correo"].ToString();
-                textBox4.Text = t.Rows[0]["telefono"].ToString();
-                Global.SeleccionarCombo(comboBox1, t.Rows[0]["carrera"]);
+                nombre.Text = t.Rows[0]["nombre"].ToString();
+                correo.Text = t.Rows[0]["correo"].ToString();
+                teléfono.Text = t.Rows[0]["telefono"].ToString();
+                Global.SeleccionarCombo(carrera, t.Rows[0]["carrera"]);
             }
             else if (avisar)
             {
@@ -91,9 +91,9 @@ namespace MENU_GENERAL.REGISTRO_ALUMNOS
 
         private void EliminarAlumno()
         {
-            if (Global.CampoVacio(textBox2, "Matrícula")) return;
+            if (Global.CampoVacio(matrícula, "Matrícula")) return;
 
-            Alumno a = new Alumno(textBox2.Text.Trim());
+            Alumno a = new Alumno(matrícula.Text.Trim());
             if (new Conexion(a.Buscar()).CONSULTAR().Tables["Tabla"].Rows.Count == 0)
             {
                 MessageBox.Show("El registro no existe");
@@ -109,8 +109,8 @@ namespace MENU_GENERAL.REGISTRO_ALUMNOS
 
         private void LimpiarCampos()
         {
-            textBox1.Clear(); textBox2.Clear(); textBox3.Clear(); textBox4.Clear();
-            comboBox1.SelectedIndex = -1;
+            nombre.Clear(); matrícula.Clear(); correo.Clear(); teléfono.Clear();
+            carrera.SelectedIndex = -1;
         }
 
         private void label4_Click(object sender, EventArgs e) { }   // referenciado por el Designer

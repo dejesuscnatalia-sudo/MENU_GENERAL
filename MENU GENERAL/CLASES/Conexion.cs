@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MENU_GENERAL.CLASES
 {
     internal class Conexion
     {
-        private string sentencia1;//es un 1 al final
-        private SqlConnection conn = new SqlConnection();
-        private SqlCommand cmd;
-
-
-        //metodos execute nonquery
+        private string sentencia1;
 
         public Conexion() { }
 
@@ -24,33 +15,28 @@ namespace MENU_GENERAL.CLASES
         {
             sentencia1 = sentencia;
         }
-        //me chute
 
-        public string EJECUTAR()//NOMBRE DEL MÉTODO
-        { //PA GRABAR, MODIF Y ELIM
-            conn.ConnectionString = CLASES.Global.miconexion;
-            if(conn.State != ConnectionState.Open)
+        // INSERT, UPDATE, DELETE
+        public string EJECUTAR()
+        {
+            using (SqlConnection cn = new SqlConnection(Global.miconexion))
+            using (SqlCommand cmd = new SqlCommand(sentencia1, cn))
             {
-                conn.Close();
-                conn.Open();
+                cn.Open();
+                cmd.ExecuteNonQuery();
             }
-            cmd=new SqlCommand ();
-            cmd.Connection = conn;
-            cmd.CommandText = sentencia1;
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            return "Operación exitosa"; 
+            return "Operación exitosa";
         }
+
+        // SELECT: devuelve un DataSet con la tabla llamada "Tabla"
         public DataSet CONSULTAR()
         {
-            DataSet datos=new DataSet();
-            conn=new SqlConnection(CLASES.Global.miconexion);
-            if (conn.State != ConnectionState.Open)
-            {  conn.Close(); conn.Open(); }
-
-            SqlDataAdapter resp= new SqlDataAdapter(sentencia1, conn);
-            resp.Fill(datos, "Tabla");
-            conn.Close();
+            DataSet datos = new DataSet();
+            using (SqlConnection cn = new SqlConnection(Global.miconexion))
+            using (SqlDataAdapter da = new SqlDataAdapter(sentencia1, cn))
+            {
+                da.Fill(datos, "Tabla");
+            }
             return datos;
         }
 
@@ -59,7 +45,8 @@ namespace MENU_GENERAL.CLASES
             return (s ?? "").Replace("'", "''");
         }
 
-        // Usa la sentencia del constructor: la 1ª columna es el valor, la 2ª el texto
+        // Llena un combo con la sentencia del constructor
+        // valor = columna llave, texto = columna que se ve
         public void LlenarCombo(ComboBox cmb, string valor, string texto)
         {
             DataSet ds = CONSULTAR();
@@ -67,8 +54,8 @@ namespace MENU_GENERAL.CLASES
             cmb.Items.Clear();
             cmb.DisplayMember = texto;
             cmb.ValueMember = valor;
-            cmb.DataSource = ds.Tables["Tabla"];
             cmb.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmb.DataSource = ds.Tables["Tabla"];
             cmb.SelectedIndex = -1;
         }
     }

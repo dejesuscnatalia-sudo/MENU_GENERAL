@@ -17,27 +17,23 @@ namespace MENU_GENERAL.CLASES
             this.id_materia = clave;
             this.Nombre = nombre;
         }
-        public clMaterias(int clave)
-        {
-            this.id_materia = clave;
-        }
+        public clMaterias(int clave) { this.id_materia = clave; }
 
         public string Guardar()
         {
-            return "Insert into tbl_Materias Values (" + id_materia + ", '" + Global.Esc(Nombre) + "')";
+            return "Insert into tbl_Materias (Id_Materia, nombre) Values (" + id_materia + ", '" + Global.Esc(Nombre) + "')";
         }
-        // CORREGIDO: antes actualizaba la columna 'carrera' y filtraba por idCarrera
         public string Modificar()
         {
-            return "Update tbl_Materias set nombre='" + Global.Esc(Nombre) + "' where id_Materia=" + id_materia;
+            return "Update tbl_Materias set nombre='" + Global.Esc(Nombre) + "' where Id_Materia=" + id_materia;
         }
         public string Buscar()
         {
-            return "Select * from tbl_Materias where id_Materia= " + id_materia;
+            return "Select * from tbl_Materias where Id_Materia=" + id_materia;
         }
         public string Eliminar()
         {
-            return "delete from tbl_Materias where id_Materia = " + id_materia;
+            return "delete from tbl_Materias where Id_Materia=" + id_materia;
         }
     }
 }

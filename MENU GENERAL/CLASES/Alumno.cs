@@ -46,14 +46,6 @@ namespace MENU_GENERAL.CLASES
             return "select * from TBL_Registro_Alumnos order by nombre";
         }
 
-        // Para el historial (ListBox) y el arreglo de la captura
-        public string ObtenerDatos(string carrera)
-        {
-            return _matricula + " - " + _nombre + " - " + carrera;
-        }
-        public void GuardarEnArreglo(Alumno[] arr, int pos)
-        {
-            arr[pos] = this;
-        }
+        
     }
 }

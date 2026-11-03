@@ -8,26 +8,18 @@ namespace MENU_GENERAL.REGISTRO_ALUMNOS
 {
     public partial class FRMCapturaAlumno : Form
     {
-        Alumno[] RegistroAlumno = new Alumno[10];
-        int contador = 0;
-        private Button btnBuscar = new Button();
-        private Button btnEliminar = new Button();
-
+        
+        
         public FRMCapturaAlumno()
         {
             InitializeComponent();
 
-            // Botones nuevos creados por código (debajo de "Guardar Alumno")
-            btnBuscar.Text = "Buscar Alumno";
-            btnBuscar.Size = new Size(114, 26);
-            btnBuscar.Location = new Point(507, 120);
-            btnEliminar.Text = "Eliminar Alumno";
-            btnEliminar.Size = new Size(114, 26);
-            btnEliminar.Location = new Point(507, 156);
-            Controls.Add(btnBuscar);
-            Controls.Add(btnEliminar);
-            btnBuscar.Click += (s, ev) => Global.Proteger(() => BuscarAlumno(true));
-            btnEliminar.Click += (s, ev) => Global.Proteger(EliminarAlumno);
+            
+            
+            toolStripButton1.Click += (s, ev) => Global.Proteger(GuardarAlumno);
+            toolStripButton2.Click += (s, ev) => Global.Proteger(() => BuscarAlumno(true));
+            toolStripButton3.Click += (s, ev) => Global.Proteger(EliminarAlumno);
+
 
             Global.Proteger(CargarCarreras);
             matrícula.Leave += (s, ev) => Global.Proteger(() => BuscarAlumno(false));
@@ -58,23 +50,13 @@ namespace MENU_GENERAL.REGISTRO_ALUMNOS
             new Conexion(existe ? alumno.Modificar() : alumno.Guardar()).EJECUTAR();
             MessageBox.Show(existe ? "Alumno modificado con éxito" : "Alumno guardado con éxito");
 
-            lstHistorial.Items.Add(alumno.ObtenerDatos(carrera.Text));
-            if (contador < RegistroAlumno.Length)
-            {
-                alumno.GuardarEnArreglo(RegistroAlumno, contador);
-                contador++;
-            }
+            
             LimpiarCampos();
         }
 
         private void BuscarAlumno(bool avisar)
         {
-            if (matrícula.Text.Trim() == "")
-            {
-                if (avisar) MessageBox.Show("Capture la matrícula.");
-                return;
-            }
-
+           
             DataTable t = new Conexion(new Alumno(matrícula.Text.Trim()).Buscar()).CONSULTAR().Tables["Tabla"];
             if (t.Rows.Count > 0)
             {
@@ -114,5 +96,25 @@ namespace MENU_GENERAL.REGISTRO_ALUMNOS
         }
 
         private void label4_Click(object sender, EventArgs e) { }   // referenciado por el Designer
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Global.Proteger(GuardarAlumno);
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Global.Proteger(() => BuscarAlumno(true));
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Global.Proteger(EliminarAlumno);
+        }
+
+        
+
+        
+        
     }
 }

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="CLASES\Alumno.cs" />
     <Compile Include="CLASES\clAreaC.cs" />
+    <Compile Include="CLASES\clAsignacionMaestroMateria.cs" />
     <Compile Include="CLASES\clCarreras.cs" />
     <Compile Include="CLASES\clCatalogo.cs">
       <SubType>Form</SubType>
@@ -64,6 +65,12 @@
     <Compile Include="CLASES\clUnidAcad.cs" />
     <Compile Include="CLASES\Conexion.cs" />
     <Compile Include="CLASES\Global.cs" />
+    <Compile Include="ESCOLAR\FRMAsignacionMaestroMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ESCOLAR\FRMAsignacionMaestroMateria.Designer.cs">
+      <DependentUpon>FRMAsignacionMaestroMateria.cs</DependentUpon>
+    </Compile>
     <Compile Include="ESCOLAR\FRMMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +173,9 @@
     <Compile Include="RESPALDO\FRMRespaldo.Designer.cs">
       <DependentUpon>FRMRespaldo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ESCOLAR\FRMAsignacionMaestroMateria.resx">
+      <DependentUpon>FRMAsignacionMaestroMateria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ESCOLAR\FRMMaterias.resx">
       <DependentUpon>FRMMaterias.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FIGURAS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQL\Script_Asignacion_Maestro_Materia.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

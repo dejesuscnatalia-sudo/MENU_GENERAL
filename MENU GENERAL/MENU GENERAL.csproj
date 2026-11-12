@@ -227,6 +227,7 @@
     <EmbeddedResource Include="RESPALDO\FRMRespaldo.resx">
       <DependentUpon>FRMRespaldo.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DOCUMENTACION_ASIGNACION_MAESTRO_MATERIA.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
